@@ -27,8 +27,8 @@ impl File {
         open_file(
             path,
             super::opfs::CreateFileMode::Create,
-            true,
             SyncAccessMode::Readonly,
+            true,
         )
         .await
     }
@@ -37,8 +37,8 @@ impl File {
         open_file(
             &path,
             super::opfs::CreateFileMode::CreateNew,
-            false,
             SyncAccessMode::Readonly,
+            false,
         )
         .await
     }
@@ -54,8 +54,8 @@ impl File {
         open_file(
             path,
             super::opfs::CreateFileMode::NotCreate,
-            false,
             SyncAccessMode::Readonly,
+            false,
         )
         .await
     }

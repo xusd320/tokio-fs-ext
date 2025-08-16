@@ -73,8 +73,8 @@ pub async fn metadata(path: impl AsRef<Path>) -> io::Result<Metadata> {
     match open_file(
         &path,
         super::opfs::CreateFileMode::NotCreate,
-        false,
         super::opfs::SyncAccessMode::Readonly,
+        false,
     )
     .await
     {

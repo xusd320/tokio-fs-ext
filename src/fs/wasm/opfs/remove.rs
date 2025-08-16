@@ -12,6 +12,8 @@ use super::{
 pub(crate) async fn remove(path: impl AsRef<Path>, recursive: bool) -> io::Result<()> {
     let virt = virtualize::virtualize(path)?;
 
+    tracing::debug!("remove: {} {recursive}", virt.to_string_lossy());
+
     let parent = virt.parent();
 
     let name = match virt.file_name() {

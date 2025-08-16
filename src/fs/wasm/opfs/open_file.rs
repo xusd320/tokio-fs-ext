@@ -22,10 +22,15 @@ use super::{
 pub(crate) async fn open_file(
     path: impl AsRef<Path>,
     create: CreateFileMode,
-    truncate: bool,
     mode: SyncAccessMode,
+    truncate: bool,
 ) -> io::Result<File> {
     let virt = virtualize::virtualize(&path)?;
+
+    tracing::debug!(
+        "open file: {} {create:?} {mode:?} truncate: {truncate}",
+        virt.to_string_lossy(),
+    );
 
     let parent = virt.parent();
 

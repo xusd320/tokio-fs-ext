@@ -6,8 +6,8 @@ pub async fn try_exists(path: impl AsRef<std::path::Path>) -> io::Result<bool> {
     Ok(open_file(
         &path,
         CreateFileMode::NotCreate,
-        false,
         SyncAccessMode::Readonly,
+        false,
     )
     .await
     .is_ok()

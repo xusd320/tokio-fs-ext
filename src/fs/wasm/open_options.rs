@@ -93,7 +93,7 @@ impl OpenOptions {
             return Err(io::Error::from(io::ErrorKind::InvalidInput));
         }
 
-        let mut file = open_file(path, self.into(), self.is_truncate(), self.into()).await?;
+        let mut file = open_file(path, self.into(), self.into(), self.is_truncate()).await?;
 
         if self.0.contains(Flags::APPEND) {
             file.seek(io::SeekFrom::End(0)).await?;

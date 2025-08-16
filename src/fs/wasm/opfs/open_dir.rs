@@ -23,6 +23,8 @@ pub(crate) async fn open_dir(
 ) -> io::Result<SendWrapper<FileSystemDirectoryHandle>> {
     let virt = virtualize::virtualize(path)?;
 
+    tracing::debug!("open_dir: {} {type:?}", virt.to_string_lossy());
+
     if let Some(handle) = get_cached_dir_handle(&virt) {
         return Ok(handle);
     }
